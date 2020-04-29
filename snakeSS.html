@@ -1,0 +1,249 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://s3.amazonaws.com/glowscript/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+<link type="text/css" href="https://s3.amazonaws.com/glowscript/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://s3.amazonaws.com/glowscript/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://s3.amazonaws.com/glowscript/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://s3.amazonaws.com/glowscript/package/glow.2.9.min.js"></script>
+<script type="text/javascript" src="https://s3.amazonaws.com/glowscript/package/RSrun.2.9.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var RS_modules = {};
+RS_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = RS_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var RS_Iter0 = string_funcs;
+        RS_Iter0 = ((typeof RS_Iter0[Symbol.iterator] === "function") ? (RS_Iter0 instanceof Map ? RS_Iter0.keys() : RS_Iter0) : Object.keys(RS_Iter0));
+        for (var RS_Index0 of RS_Iter0) {
+            name = RS_Index0;
+            (RS_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? RS_expr_temp.length + name : name] = (RS_expr_temp = RS_str.prototype)[(typeof name === "number" && name < 0) ? RS_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    RS_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+    var version, box, sphere, simple_sphere, cylinder, pyramid, cone, helix, ellipsoid, ring, arrow, compound, display, vector, print, arange, __name__, type, scene, RS_ls, ccc, snake, wall1, wall2, wall3, wall4, balls, snakepos, go, score, time, LOH, t, k, q, createAstID, i, a;
+    version = RS_list_decorate([ "2.9", "glowscript" ]);
+    Array.prototype['+']=function(r) {return this.concat(r)}
+    Array.prototype['*']=function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    box = vp_box;
+    sphere = vp_sphere;
+    simple_sphere = vp_simple_sphere;
+    cylinder = vp_cylinder;
+    pyramid = vp_pyramid;
+    cone = vp_cone;
+    helix = vp_helix;
+    ellipsoid = vp_ellipsoid;
+    ring = vp_ring;
+    arrow = vp_arrow;
+    compound = vp_compound;
+    display = canvas;
+    vector = vec;
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    scene = canvas();
+    fontloading();
+    await waitforfonts();
+    var strings = RS_modules.pythonize.strings;
+
+    strings();
+    "3";
+    scene.width = 1280;
+    "4";
+    scene.height = 800;
+    "5";
+    scene.userzoom = true;
+    "6";
+    scene.userspin = false;
+    "7";
+    scene.autoscale = true;
+    "8";
+    scene.camera.range = 9;
+    "9";
+    scene.forward = vector(0, 0, 1["-u"]());
+    "12";
+    async function rn() {
+        var RS_ls, q;
+        "13";
+        q = random();
+        "14";
+        if (q[">="](.5)) {
+            "15";
+            return 1;
+            "16";
+        } else {
+            "17";
+            return 1["-u"]();
+        }
+    };
+    if (!rn.__module__) Object.defineProperties(rn, {
+        __module__ : {value: null}
+    });
+
+    "20";
+    ccc = 1;
+    "21";
+    snake = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: vector(0, 0, 0), color: vector(1, 1, 1), radius: 1, make_trail: true, trail_radius: 1, trail_color: color.white, trail_type: "points", interval: 2, retain: ccc})]);
+    "23";
+    wall1 = RS_interpolate_kwargs.call(this, box, [RS_desugar_kwargs({pos: vector(55, 0, 0), height: 115, length: 5})]);
+    "24";
+    wall2 = RS_interpolate_kwargs.call(this, box, [RS_desugar_kwargs({pos: vector(55["-u"](), 0, 0), height: 115, length: 5})]);
+    "25";
+    wall3 = RS_interpolate_kwargs.call(this, box, [RS_desugar_kwargs({pos: vector(0, 55, 0), height: 5, length: 115})]);
+    "26";
+    wall4 = RS_interpolate_kwargs.call(this, box, [RS_desugar_kwargs({pos: vector(0, 55["-u"](), 0), height: 5, length: 115})]);
+    "28";
+    balls = RS_list_decorate([]);
+    "29";
+    snakepos = RS_list_decorate([]);
+    "30";
+    go = "";
+    "31";
+    score = 0;
+    "32";
+    time = 0;
+    "33";
+    LOH = 0;
+    "34";
+    t = RS_interpolate_kwargs.call(this, text, [RS_desugar_kwargs({text: "DURKA = "["+"](score), color: color.cyan})]);
+    "42";
+    while (true) {
+        "43";
+        ;(await rate(30));
+        "44";
+        if ((LOH === 0 || typeof LOH === "object" && RS_equals(LOH, 0))) {
+            "46";
+            k = keysdown();
+            "47";
+            if (RS_in("left", k)) {
+                "48";
+                go = "l";
+                "49";
+            }
+            if (RS_in("right", k)) {
+                "50";
+                go = "r";
+                "51";
+            }
+            if (RS_in("up", k)) {
+                "52";
+                go = "u";
+                "53";
+            }
+            if (RS_in("down", k)) {
+                "54";
+                go = "d";
+                "55";
+            }
+            if ((go === "l" || typeof go === "object" && RS_equals(go, "l"))) {
+                "56";
+                snake.pos.x=snake.pos.x["-"](.5);
+                "57";
+            }
+            if ((go === "r" || typeof go === "object" && RS_equals(go, "r"))) {
+                "58";
+                snake.pos.x=snake.pos.x["+"](.5);
+                "59";
+            }
+            if ((go === "u" || typeof go === "object" && RS_equals(go, "u"))) {
+                "60";
+                snake.pos.y=snake.pos.y["+"](.5);
+                "61";
+            }
+            if ((go === "d" || typeof go === "object" && RS_equals(go, "d"))) {
+                "62";
+                snake.pos.y=snake.pos.y["-"](.5);
+                "64";
+            }
+            if (snake.pos.x[">="](51) || snake.pos.x["<="](51["-u"]()) || snake.pos.y[">="](51) || snake.pos.y["<="](51["-u"]())) {
+                "65";
+                LOH = 1;
+                "67";
+            }
+            if (RS_equals(time["%"](5), 0)) {
+                "68";
+                q = random();
+                "69";
+                if (q["<="](.33)) {
+                    "70";
+                    createAstID = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({make_trail: false, visible: true, pos: vector(random()["*"](50)["*"]((await rn())), random()["*"](50)["*"]((await rn())), 0), texture: "https://raw.githubusercontent.com/MarkusOster999/MarkusOster999.github.io/master/15775744836010.jpg"})]);
+                    "71";
+                }
+                if (q[">"](.33) && q["<="](.66)) {
+                    "72";
+                    createAstID = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({make_trail: false, visible: true, pos: vector(random()["*"](50)["*"]((await rn())), random()["*"](50)["*"]((await rn())), 0), texture: "https://raw.githubusercontent.com/MarkusOster999/MarkusOster999.github.io/master/Снимок%20экрана%202020-04-26%20в%2017.48.01.jpg"})]);
+                    "73";
+                } else {
+                    "74";
+                    createAstID = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({make_trail: false, visible: true, pos: vector(random()["*"](50)["*"]((await rn())), random()["*"](50)["*"]((await rn())), 0), texture: "https://raw.githubusercontent.com/MarkusOster999/MarkusOster999.github.io/master/EPOw_w_WkAQngRZ.jpg"})]);
+                }
+                "75";
+                balls.append(createAstID);
+            }
+            "77";
+            var RS_Iter1 = range(len(balls));
+            RS_Iter1 = ((typeof RS_Iter1[Symbol.iterator] === "function") ? (RS_Iter1 instanceof Map ? RS_Iter1.keys() : RS_Iter1) : Object.keys(RS_Iter1));
+            for (var RS_Index1 of RS_Iter1) {
+                i = RS_Index1;
+                "78";
+                if (abs(snake.pos.x["-"](balls[(typeof i === "number" && i["<"](0)) ? balls.length["+"](i) : i].pos.x))["<"](1) && abs(snake.pos.y["-"](balls[(typeof i === "number" && i["<"](0)) ? balls.length["+"](i) : i].pos.y))["<"](1) && (balls[(typeof i === "number" && i["<"](0)) ? balls.length["+"](i) : i].visible === true || typeof balls[(typeof i === "number" && i["<"](0)) ? balls.length["+"](i) : i].visible === "object" && RS_equals(balls[(typeof i === "number" && i["<"](0)) ? balls.length["+"](i) : i].visible, true))) {
+                    "79";
+                    balls[(typeof i === "number" && i["<"](0)) ? balls.length["+"](i) : i].visible = false;
+                    "80";
+                    snake.retain = ccc;
+                    "81";
+                    ccc = ccc["+"](1);
+                    "82";
+                    score=score["+"](1);
+                    "83";
+                    t.color = color.black;
+                    "84";
+                    t = RS_interpolate_kwargs.call(this, text, [RS_desugar_kwargs({text: "DURKA = "["+"](score), color: color.cyan})]);
+                }
+            }
+            "86";
+            time=time["+"](1);
+            "87";
+        } else {
+            "88";
+            a = RS_interpolate_kwargs.call(this, text, [RS_desugar_kwargs({text: "TEE SDOH V DURKEE HAHAHAHAHAH", color: color.cyan, pos: vector(7["-u"](), 20, 0)})]);
+        }
+    }
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>
